@@ -30,3 +30,10 @@ server.listen(PORT, () => {
     console.log( 'The server is up on PORT', PORT)
 });
 
+server.get('/background/:color', (req, res, next) => {
+    res.send(`
+      <body style="background: ${ req.params.color };">
+        <h1>Hello World</h1>
+      </body>
+    `);
+  });

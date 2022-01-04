@@ -17,4 +17,15 @@ tagsRouter.get('/', async ( req, res) => {
     });
 })
 
+tagsRouter.get('/:tagName/posts', async (req, res) => {
+    const tagnamePosts = await getPostsByTagName();
+    try{
+    res.send({
+        tagnamePosts
+    });
+    } catch ({ name, message }) {
+        next({ name, message });
+      }
+})
+
 module.exports = tagsRouter;
